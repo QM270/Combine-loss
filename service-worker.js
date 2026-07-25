@@ -1,6 +1,6 @@
 /* Combine Loss Calculator - offline cache.
    Bump CACHE when you change any file, or phones will keep serving the old copy. */
-var CACHE = "combine-loss-v4";
+var CACHE = "combine-loss-v5";
 var FILES = [
   "./",
   "./index.html",

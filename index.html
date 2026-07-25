@@ -463,6 +463,7 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <h2>Reference</h2>
     <p class="note" style="padding:0">Methods and tables adapted from the <strong>Combine Seed Loss Guide</strong>, Prairie Agricultural Machinery Institute (PAMI) and the Canola Council of Canada. Calculator logic follows the farmpro.ca combine loss calculators.</p>
     <p class="tiny">Volume figures use the Imperial bushel (36.3687&nbsp;L). This app runs entirely on your phone &mdash; no internet needed, no data sent anywhere.</p>
+    <p class="tiny" style="font-weight:700;color:var(--green)">App version 5</p>
   </div>
 
   <button class="reset" id="resetBtn">Reset all inputs to defaults</button>
@@ -841,18 +842,36 @@ function buildTables(){
   });
 
   /* Tap a box and the number is already selected, so typing replaces it.
-     The mouseup/touch guard stops the browser from immediately collapsing that
-     selection into a caret. The flag clears after the first tap, so tapping a
-     second time inside the box still lets you place the cursor and edit. */
+
+     The browser places the caret during mousedown/mouseup, so selecting on
+     focus alone gets overwritten. We re-select on mouseup AND on click (which
+     both fire after the caret is placed) and once more on a zero-delay timer,
+     which covers iOS Safari's late caret placement. No preventDefault anywhere
+     — on iOS that can swallow the focus entirely and stop the keyboard opening.
+
+     `fresh` clears after the first tap, so tapping a second time inside the box
+     places the cursor normally and lets you edit part of a number. */
   Array.prototype.forEach.call(document.querySelectorAll('input[type="text"]'), function(el){
     var fresh = false;
+    function grab(el){
+      try{ el.select(); }catch(e){}
+      try{ el.setSelectionRange(0, el.value.length); }catch(e){}
+    }
     el.addEventListener("focus", function(){
       fresh = true;
       var self = this;
-      setTimeout(function(){ if (fresh){ try{ self.select(); }catch(e){} } }, 0);
+      grab(self);
+      setTimeout(function(){ if (fresh) grab(self); }, 0);
     });
-    el.addEventListener("mouseup", function(e){ if (fresh){ e.preventDefault(); fresh = false; } });
-    el.addEventListener("touchend", function(e){ if (fresh){ e.preventDefault(); this.select(); fresh = false; } });
+    el.addEventListener("mouseup", function(){ if (fresh) grab(this); });
+    el.addEventListener("touchend", function(){ if (fresh){ var s=this; setTimeout(function(){ grab(s); },0); } });
+    el.addEventListener("click", function(){
+      if (!fresh) return;
+      fresh = false;
+      var self = this;
+      grab(self);
+      setTimeout(function(){ grab(self); }, 0);
+    });
     el.addEventListener("blur", function(){ fresh = false; });
   });
 
