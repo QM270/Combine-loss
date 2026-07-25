@@ -195,11 +195,11 @@ h3.g{font-size:15px; margin:16px 0 7px}
     </div>
     <div class="row imponly">
       <label for="dens">Density <span class="hint">lbs/bu</span></label>
-      <input type="number" id="dens" inputmode="decimal" step="0.1">
+      <input type="text" id="dens" inputmode="decimal" step="0.1">
     </div>
     <div class="row">
       <label for="yield">Yield <span class="hint" id="lYield">bu/ac</span></label>
-      <input type="number" id="yield" inputmode="decimal" step="0.1">
+      <input type="text" id="yield" inputmode="decimal" step="0.1">
     </div>
   </div>
 
@@ -207,19 +207,19 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <h2>Combine</h2>
     <div class="row">
       <label for="cut">Cut width <span class="hint" id="lCut">ft</span></label>
-      <input type="number" id="cut" inputmode="decimal" step="0.1">
+      <input type="text" id="cut" inputmode="decimal" step="0.1">
     </div>
     <div class="row">
       <label for="disch">Discharge width <span class="hint" id="lDisch">ft</span></label>
-      <input type="number" id="disch" inputmode="decimal" step="0.1">
+      <input type="text" id="disch" inputmode="decimal" step="0.1">
     </div>
     <div class="row advonly">
       <label for="speed">Ground speed <span class="hint" id="lSpeed">mph</span></label>
-      <input type="number" id="speed" inputmode="decimal" step="0.1">
+      <input type="text" id="speed" inputmode="decimal" step="0.1">
     </div>
     <div class="row advonly">
       <label for="mog">MOG / grain ratio <span class="hint">straw &amp; chaff per unit of grain</span></label>
-      <input type="number" id="mog" inputmode="decimal" step="0.1">
+      <input type="text" id="mog" inputmode="decimal" step="0.1">
     </div>
   </div>
 
@@ -227,21 +227,21 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <h2>Catch sample</h2>
     <div class="row">
       <label for="area">Catch area <span class="hint" id="lArea">ft&sup2;</span></label>
-      <input type="number" id="area" inputmode="decimal" step="0.01">
+      <input type="text" id="area" inputmode="decimal" step="0.01">
     </div>
     <div class="row">
       <label for="grams">Loss weight <span class="hint">grams of clean seed in the pan</span></label>
-      <input type="number" id="grams" inputmode="decimal" step="0.1">
+      <input type="text" id="grams" inputmode="decimal" step="0.1">
     </div>
     <details class="helper">
       <summary>Work out my pan area</summary>
       <div class="row">
         <label for="panL">Pan length <span class="hint" id="lPanU">inches</span></label>
-        <input type="number" id="panL" inputmode="decimal" step="0.1">
+        <input type="text" id="panL" inputmode="decimal" step="0.1">
       </div>
       <div class="row">
         <label for="panW">Pan width <span class="hint" id="lPanU2">inches</span></label>
-        <input type="number" id="panW" inputmode="decimal" step="0.1">
+        <input type="text" id="panW" inputmode="decimal" step="0.1">
       </div>
       <div class="row">
         <label>Area <span class="hint">tap to use it above</span></label>
@@ -270,15 +270,15 @@ h3.g{font-size:15px; margin:16px 0 7px}
     </div>
     <div class="row">
       <label for="sSize">Seed size <span class="hint">mg per seed (1000&nbsp;kernel wt &divide; 1000)</span></label>
-      <input type="number" id="sSize" inputmode="decimal" step="0.1">
+      <input type="text" id="sSize" inputmode="decimal" step="0.1">
     </div>
     <div class="row">
       <label for="sYield">Yield <span class="hint" id="lSYield">bu/ac</span></label>
-      <input type="number" id="sYield" inputmode="decimal" step="0.1">
+      <input type="text" id="sYield" inputmode="decimal" step="0.1">
     </div>
     <div class="row imponly">
       <label for="sDens">Density <span class="hint">lbs/bu</span></label>
-      <input type="number" id="sDens" inputmode="decimal" step="0.1">
+      <input type="text" id="sDens" inputmode="decimal" step="0.1">
     </div>
   </div>
 
@@ -286,19 +286,19 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <h2>Count</h2>
     <div class="row">
       <label for="sArea">Count area <span class="hint" id="lSArea">ft&sup2;</span></label>
-      <input type="number" id="sArea" inputmode="decimal" step="0.01">
+      <input type="text" id="sArea" inputmode="decimal" step="0.01">
     </div>
     <div class="row">
       <label for="sCount">Kernel count <span class="hint">seeds found in that area</span></label>
-      <input type="number" id="sCount" inputmode="decimal" step="1">
+      <input type="text" id="sCount" inputmode="decimal" step="1">
     </div>
     <div class="row">
       <label for="sCut">Cut width <span class="hint" id="lSCut">ft</span></label>
-      <input type="number" id="sCut" inputmode="decimal" step="0.1">
+      <input type="text" id="sCut" inputmode="decimal" step="0.1">
     </div>
     <div class="row">
       <label for="sDisch">Discharge width <span class="hint" id="lSDisch">ft</span></label>
-      <input type="number" id="sDisch" inputmode="decimal" step="0.1">
+      <input type="text" id="sDisch" inputmode="decimal" step="0.1">
     </div>
   </div>
 
@@ -311,15 +311,15 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <h2>Shared settings</h2>
     <div class="row">
       <label for="cOp">Operating cost <span class="hint">$/hour, all-in</span></label>
-      <input type="number" id="cOp" inputmode="decimal" step="1">
+      <input type="text" id="cOp" inputmode="decimal" step="1">
     </div>
     <div class="row">
       <label for="cWidth">Width of cut <span class="hint" id="lCWidth">ft</span></label>
-      <input type="number" id="cWidth" inputmode="decimal" step="0.1">
+      <input type="text" id="cWidth" inputmode="decimal" step="0.1">
     </div>
     <div class="row">
       <label for="cPrice">Crop price <span class="hint" id="lCPrice">$/bu</span></label>
-      <input type="number" id="cPrice" inputmode="decimal" step="0.01">
+      <input type="text" id="cPrice" inputmode="decimal" step="0.01">
     </div>
   </div>
 
@@ -328,13 +328,13 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <div class="ab"><span></span><span class="abhead">Option A</span><span class="abhead">Option B</span></div>
     <div class="ab">
       <span>Speed <span class="hint" id="lCSpeed">mph</span></span>
-      <input type="number" id="aSpeed" inputmode="decimal" step="0.1">
-      <input type="number" id="bSpeed" inputmode="decimal" step="0.1">
+      <input type="text" id="aSpeed" inputmode="decimal" step="0.1">
+      <input type="text" id="bSpeed" inputmode="decimal" step="0.1">
     </div>
     <div class="ab">
       <span>Loss <span class="hint" id="lCLoss">bu/ac</span></span>
-      <input type="number" id="aLoss" inputmode="decimal" step="0.01">
-      <input type="number" id="bLoss" inputmode="decimal" step="0.01">
+      <input type="text" id="aLoss" inputmode="decimal" step="0.01">
+      <input type="text" id="bLoss" inputmode="decimal" step="0.01">
     </div>
     <div class="ab">
       <span>Work rate <span class="hint" id="lCRate">ac/hr</span></span>
@@ -540,6 +540,21 @@ function num(id){ var v = parseFloat($(id).value); return isFinite(v) ? v : NaN;
 function fmt(n,d){ return isFinite(n) ? n.toFixed(d === undefined ? 2 : d) : "—"; }
 function round4(v){ return Math.round(v*10000)/10000; }
 
+/* Round to the fewest decimals that still represents the value accurately
+   (within 0.005%). Stops unit toggling from leaving 50.0007 or 2.9999 in the
+   boxes — converting ft -> m -> ft now lands back on a clean 29, no matter how
+   many times you flip the switch. */
+function tidy(v){
+  if (!isFinite(v)) return v;
+  if (v === 0) return 0;
+  var scale = Math.max(1, Math.abs(v));
+  for (var dp = 0; dp <= 6; dp++){
+    var r = Math.round(v * Math.pow(10,dp)) / Math.pow(10,dp);
+    if (Math.abs(r - v) <= scale * 0.00005) return r;
+  }
+  return Math.round(v*1e6)/1e6;
+}
+
 /* ---------- storage ---------- */
 function save(){ try{ localStorage.setItem("cls_v1", JSON.stringify(S)); }catch(e){} }
 function load(){
@@ -697,7 +712,7 @@ function calcAll(){ calcLoss(); calcSeed(); calcCost(); }
 
 /* ---------- unit conversion of entered values ---------- */
 function convertValues(toMetric){
-  function conv(id, f){ var v = parseFloat($(id).value); if (isFinite(v)) $(id).value = round4(v*f); }
+  function conv(id, f){ var v = parseFloat($(id).value); if (isFinite(v)) $(id).value = tidy(v*f); }
   var L  = toMetric ? FT_M   : 1/FT_M;
   var A  = toMetric ? FT2_M2 : 1/FT2_M2;
   var SP = toMetric ? MPH_KMH: 1/MPH_KMH;
@@ -715,7 +730,7 @@ function convertValues(toMetric){
   function yconv(id, dens){
     var v = parseFloat($(id).value); if (!isFinite(v)) return;
     var f = dens / LB_PER_T / AC_HA;
-    $(id).value = round4(toMetric ? v*f : v/f);
+    $(id).value = tidy(toMetric ? v*f : v/f);
   }
   yconv("yield", d1); yconv("aLoss", d1); yconv("bLoss", d1); yconv("sYield", d2);
 
@@ -723,7 +738,7 @@ function convertValues(toMetric){
   var pv = parseFloat($("cPrice").value);
   if (isFinite(pv)){
     var pf = LB_PER_T / d1;
-    $("cPrice").value = round4(toMetric ? pv*pf : pv/pf);
+    $("cPrice").value = tidy(toMetric ? pv*pf : pv/pf);
   }
 }
 
@@ -825,6 +840,22 @@ function buildTables(){
     });
   });
 
+  /* Tap a box and the number is already selected, so typing replaces it.
+     The mouseup/touch guard stops the browser from immediately collapsing that
+     selection into a caret. The flag clears after the first tap, so tapping a
+     second time inside the box still lets you place the cursor and edit. */
+  Array.prototype.forEach.call(document.querySelectorAll('input[type="text"]'), function(el){
+    var fresh = false;
+    el.addEventListener("focus", function(){
+      fresh = true;
+      var self = this;
+      setTimeout(function(){ if (fresh){ try{ self.select(); }catch(e){} } }, 0);
+    });
+    el.addEventListener("mouseup", function(e){ if (fresh){ e.preventDefault(); fresh = false; } });
+    el.addEventListener("touchend", function(e){ if (fresh){ e.preventDefault(); this.select(); fresh = false; } });
+    el.addEventListener("blur", function(){ fresh = false; });
+  });
+
   $("crop").addEventListener("change", function(){
     var c = CROPS[this.value];
     if (c){ $("dens").value = c[1]; S.dens = c[1]; save(); }
@@ -841,7 +872,7 @@ function buildTables(){
 
   $("panUse").addEventListener("click", function(){
     var v = parseFloat(this.getAttribute("data-v"));
-    if (isFinite(v)){ $("area").value = round4(v); S.area = $("area").value; save(); calcAll(); }
+    if (isFinite(v)){ $("area").value = tidy(v); S.area = $("area").value; save(); calcAll(); }
   });
 
   function setUnits(u){
