@@ -105,11 +105,6 @@ input:focus,select:focus{outline:2px solid var(--accent); outline-offset:-1px}
 .out .sub{display:flex; justify-content:space-between; font-size:14px; padding:3px 0; opacity:.92;
   border-top:1px solid rgba(255,255,255,.22); margin-top:6px; padding-top:7px}
 .out .sub span:last-child{font-variant-numeric:tabular-nums; font-weight:600}
-.verdict{margin-top:10px; border-radius:9px; padding:8px 10px; font-size:13.5px; font-weight:600;
-  background:rgba(255,255,255,.16)}
-.verdict.ok{background:#d7f0d3; color:#1d4a20}
-.verdict.warn{background:#fbe6c2; color:#6d4400}
-.verdict.bad{background:#fbd9d6; color:#7d1b15}
 nav{
   position:fixed; left:0; right:0; bottom:0; z-index:30;
   display:flex; background:rgba(255,255,255,.95);
@@ -184,7 +179,6 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <div class="sub advonly"><span>Grain feedrate</span><span id="oFeedV">&mdash;</span></div>
     <div class="sub advonly"><span>Grain feedrate (t/hr)</span><span id="oFeedT">&mdash;</span></div>
     <div class="sub advonly"><span>MOG feedrate (t/hr)</span><span id="oMog">&mdash;</span></div>
-    <div class="verdict" id="oVerdict">Enter your numbers below.</div>
   </div>
 
   <div class="card">
@@ -259,7 +253,6 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <div class="big"><span>Total loss</span><span id="sLoss">&mdash;</span></div>
     <div class="big"><span>Relative loss</span><span id="sRel">&mdash;</span></div>
     <div class="sub"><span>Concentration factor (CF)</span><span id="sCF">&mdash;</span></div>
-    <div class="verdict" id="sVerdict">Count the seeds in your pan and enter them below.</div>
   </div>
 
   <div class="card">
@@ -463,7 +456,7 @@ h3.g{font-size:15px; margin:16px 0 7px}
     <h2>Reference</h2>
     <p class="note" style="padding:0">Methods and tables adapted from the <strong>Combine Seed Loss Guide</strong>, Prairie Agricultural Machinery Institute (PAMI) and the Canola Council of Canada. Calculator logic follows the farmpro.ca combine loss calculators.</p>
     <p class="tiny">Volume figures use the Imperial bushel (36.3687&nbsp;L). This app runs entirely on your phone &mdash; no internet needed, no data sent anywhere.</p>
-    <p class="tiny" style="font-weight:700;color:var(--green)">App version 5</p>
+    <p class="tiny" style="font-weight:700;color:var(--green)">App version 6</p>
   </div>
 
   <button class="reset" id="resetBtn">Reset all inputs to defaults</button>
@@ -591,16 +584,6 @@ function lossCore(grams, area, cut, disch, density){
   return out;
 }
 
-function verdict(el, rel){
-  if (!isFinite(rel)){ el.className = "verdict"; el.textContent = "Fill in the fields below to see your loss."; return; }
-  if (rel < 1){ el.className = "verdict ok";
-    el.textContent = "Under 1% — good. You may be able to speed up and gain acres per hour."; }
-  else if (rel <= 2){ el.className = "verdict warn";
-    el.textContent = "1–2% — acceptable for most crops, but there is room to tighten up."; }
-  else { el.className = "verdict bad";
-    el.textContent = "Over 2% — worth stopping to adjust. See the Guide tab."; }
-}
-
 /* ---------- LOSS TAB ---------- */
 function calcLoss(){
   var grams = num("grams"), area = num("area"), cut = num("cut"), disch = num("disch"),
@@ -611,14 +594,12 @@ function calcLoss(){
 
   var ok = isFinite(grams) && isFinite(area) && area > 0 && isFinite(cut) &&
            isFinite(disch) && disch > 0 && (met() || (isFinite(dens) && dens > 0));
-  var rel = NaN;
   if (ok){
     var r = lossCore(grams, area, cut, disch, dens);
     $("oLoss").textContent = fmt(r.value, met() ? 3 : 2) + lossU;
-    if (isFinite(yv) && yv > 0){ rel = r.value / yv * 100; $("oRel").textContent = fmt(rel,1) + " %"; }
+    if (isFinite(yv) && yv > 0) $("oRel").textContent = fmt(r.value / yv * 100, 1) + " %";
     else $("oRel").textContent = "—";
   } else { $("oLoss").textContent = "—"; $("oRel").textContent = "—"; }
-  verdict($("oVerdict"), rel);
 
   /* advanced */
   var dash = "—";
@@ -667,14 +648,12 @@ function calcSeed(){
 
   var ok = isFinite(cnt) && isFinite(size) && isFinite(area) && area > 0 &&
            isFinite(cut) && isFinite(disch) && disch > 0 && (met() || (isFinite(dens) && dens > 0));
-  var rel = NaN;
   if (ok){
     var r = lossCore(cnt * size / 1000, area, cut, disch, dens);   /* mg -> g */
     $("sLoss").textContent = fmt(r.value, met()?3:2) + lossU;
-    if (isFinite(yv) && yv > 0){ rel = r.value / yv * 100; $("sRel").textContent = fmt(rel,1) + " %"; }
+    if (isFinite(yv) && yv > 0) $("sRel").textContent = fmt(r.value / yv * 100, 1) + " %";
     else $("sRel").textContent = "—";
   } else { $("sLoss").textContent = "—"; $("sRel").textContent = "—"; }
-  verdict($("sVerdict"), rel);
 }
 
 /* ---------- COST COMPARE TAB ---------- */
